@@ -1,32 +1,13 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  FlatList,
-  Image,
-} from "react-native";
+import { View, Text, Image, StyleSheet, FlatList } from "react-native";
 import React from "react";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
-import { useFonts } from "expo-font";
+import Entypo from "@expo/vector-icons/Entypo";
+import EvilIcons from "@expo/vector-icons/EvilIcons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import colors from "../../assets/Colors/colors";
 import postsData from "../../assets/data/postsdata";
-import Entypo from "@expo/vector-icons/Entypo";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import EvilIcons from "@expo/vector-icons/EvilIcons";
 
-export default function TenFlatList() {
-  const [fontsLoaded] = useFonts({
-    "Inter-Light": require("../../assets/fonts/Inter-Light.ttf"),
-    "Inter-Bold": require("../../assets/fonts/Inter-Bold.ttf"),
-    "Inter-Medium": require("../../assets/fonts/Inter-Medium.ttf"),
-    "Inter-Regular": require("../../assets/fonts/Inter-Regular.ttf"),
-  });
-  if (!fontsLoaded) {
-    return undefined;
-  }
-
+export default function Feed() {
   const renderPostItem = ({ item }) => {
     return (
       <View style={styles.feedWrapper}>
@@ -34,10 +15,10 @@ export default function TenFlatList() {
         <View style={styles.postHeader}>
           <View style={styles.postHeaderLeft}>
             <View style={styles.profilePictureContainer}>
-              <Ionicons
-                name="person-outline"
-                size={20}
+              <Image
                 style={styles.profilePictureIcon}
+                source={item.profilePicture}
+                resizeMode="cover"
               />
             </View>
             <View style={styles.userInfo}>
@@ -75,7 +56,7 @@ export default function TenFlatList() {
         <View style={styles.postTitleWrapper}>
           <Text style={styles.postTitleText}>{item.Title}</Text>
           <View style={styles.postTag}>
-            <Text style={styles.postTagText}> Sports</Text>
+            <Text style={styles.postTagText}>{item.Category}</Text>
           </View>
         </View>
 
@@ -101,112 +82,16 @@ export default function TenFlatList() {
       </View>
     );
   };
-
   return (
-    <View style={styles.container}>
-      {/* Header */}
-      <SafeAreaView>
-        <View style={styles.headerWrapper}>
-          <View style={styles.headerLeft}>
-            <Ionicons name="menu-sharp" size={30} color={colors.text} />
-            <Text style={styles.tenText}>TEN</Text>
-          </View>
-          <View style={styles.headerRight}>
-            <Feather name="plus" size={28} style={styles.plusIcon} />
-            <Feather name="search" size={24} style={styles.searchIcon} />
-          </View>
-        </View>
-      </SafeAreaView>
-
-      {/* Follwing/Discover */}
-      <View style={styles.followingDiscoverWrapper}>
-        <View style={styles.followingContainer}>
-          <Text style={styles.followingDiscoverText}>Following</Text>
-        </View>
-        <View style={styles.discoverContainer}>
-          <Text style={styles.followingDiscoverText}>Discover</Text>
-        </View>
-      </View>
-
-      {/* Feed */}
-      <FlatList
-        data={postsData}
-        renderItem={renderPostItem}
-        keyExtractor={(item) => item.id}
-      />
-    </View>
+    <FlatList
+      data={postsData}
+      renderItem={renderPostItem}
+      keyExtractor={(item) => item.id}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  headerWrapper: {
-    //borderWidth: 2,
-    width: "100%",
-    height: 64,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 10,
-    paddingHorizontal: 16,
-  },
-  headerLeft: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  headerRight: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  tenText: {
-    fontFamily: "Inter-Medium",
-    fontSize: 20,
-    color: colors.text,
-    paddingLeft: 13,
-  },
-  plusIcon: {
-    paddingRight: 23,
-    color: colors.circles,
-  },
-  searchIcon: {
-    color: colors.circles,
-  },
-  followingDiscoverWrapper: {
-    //borderWidth: 2,
-    flexDirection: "row",
-    justifyContent: "center",
-    flexShrink: 0,
-    paddingLeft: 16,
-    paddingRight: 14,
-    paddingTop: 20,
-    paddingBottom: 28,
-  },
-  followingContainer: {
-    width: 177,
-    height: 39,
-    borderWidth: 1,
-    borderColor: colors.text,
-    borderRadius: 6,
-    backgroundColor: colors.containerColor,
-    marginRight: 5,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  discoverContainer: {
-    width: 177,
-    height: 39,
-    borderRadius: 6,
-    backgroundColor: colors.containerColor,
-    marginLeft: 2,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  followingDiscoverText: {
-    fontFamily: "Inter-Regular",
-    fontSize: 16,
-    color: colors.text,
-  },
   feedWrapper: {
     flex: 1,
     //borderWidth: 2,
@@ -250,10 +135,14 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 50,
     backgroundColor: colors.containerColor,
+    overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",
   },
-  profilePictureIcon: {},
+  profilePictureIcon: {
+    height: "100%",
+    width: "100%",
+  },
   userInfo: {
     paddingLeft: 17,
   },
@@ -304,6 +193,7 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Bold",
     fontSize: 16,
     paddingTop: 4,
+    //width: "100%",
   },
   postTag: {
     backgroundColor: colors.ovals,
