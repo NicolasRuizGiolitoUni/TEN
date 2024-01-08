@@ -1,33 +1,58 @@
-import { View, Text, StyleSheet, Modal, SafeAreaView } from "react-native";
-import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Modal,
+  SafeAreaView,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
+import React, { useDebugValue, useState } from "react";
+import { useFonts } from "expo-font";
 import Entypo from "@expo/vector-icons/Entypo";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import reactions from "../components/reactions";
+import reactions from "./reactions";
 
 export default function Practice() {
   const [visible, setModalVisible] = useState(false);
+  const [selectedReaction, setSelectedReaction] = useState("heart-outlined");
+
+  const handleRactionPress = (reactionIcon) => {
+    setSelectedReaction(reactionIcon);
+    setModalVisible(false);
+  };
 
   return (
     <View style={styles.appContainer}>
       <View style={styles.iconWrapper}>
-        <MaterialIcons
-          name="emoji-emotions"
+        <Entypo
+          name={selectedReaction}
           size={32}
           onPress={() => setModalVisible(true)}
         />
 
-        <Modal visible={visible}>
-          <SafeAreaView
+        <Modal transparent={true} visible={visible}>
+          <TouchableOpacity
             style={styles.reactionsModalContaier}
-            onTouchStart={() => setModalVisible(false)}
+            onPress={() => setModalVisible(false)}
           >
             <View style={styles.reactionsWrapper}>
-              <Entypo name="emoji-flirt" />
-              <Entypo name="emoji-happy" />
-              <Entypo name="emoji-neutral" />
-              <Entypo name="emoji-sad" />
+              {reactions.map((item, key) => (
+                <TouchableOpacity
+                  style={styles.reactionsItems}
+                  onPress={() => handleRactionPress(item.icon)}
+                  key={key}
+                >
+                  <Entypo
+                    name={item.icon}
+                    size={24}
+                    style={styles.iconsStyle}
+                  />
+                  <Text style={styles.textStyle}>{item.name}</Text>
+                </TouchableOpacity>
+              ))}
             </View>
-          </SafeAreaView>
+          </TouchableOpacity>
         </Modal>
       </View>
     </View>
@@ -54,5 +79,24 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     position: "absolute",
     top: 76,
+    paddingHorizontal: 7,
+    paddingVertical: 7,
+    borderRadius: 8,
+  },
+  reactionsItems: {
+    flexDirection: "row",
+    paddingBottom: 10,
+    alignItems: "center",
+  },
+  iconsStyle: {
+    marginRight: 5,
+  },
+  textStyle: {
+    //fontFamily: "Inter-Light",
+    fontSize: 16,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "blue",
   },
 });

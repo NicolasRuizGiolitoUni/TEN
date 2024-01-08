@@ -8,11 +8,12 @@ import {
 } from "react-native";
 import React from "react";
 import MainScreen from "./src/screens/mainScreen";
+import Practice from "./src/PracticeFiles/practice";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <MainScreen />
+      <Practice />
     </SafeAreaView>
   );
 }
