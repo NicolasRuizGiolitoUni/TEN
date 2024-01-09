@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native";
-import React, { useDebugValue, useState } from "react";
+import React, { useState } from "react";
 import { useFonts } from "expo-font";
 import Entypo from "@expo/vector-icons/Entypo";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -17,8 +17,20 @@ export default function Practice() {
   const [visible, setModalVisible] = useState(false);
   const [selectedReaction, setSelectedReaction] = useState("heart-outlined");
 
+  const heartReactionPressed = () => {
+    if (selectedReaction != "heart-outlined") {
+      setSelectedReaction("heart-outlined");
+    } else {
+      setModalVisible(true);
+    }
+  };
+
   const handleRactionPress = (reactionIcon) => {
-    setSelectedReaction(reactionIcon);
+    if (!selectedReaction) {
+      setSelectedReaction("heart-outlined");
+    } else {
+      setSelectedReaction(reactionIcon);
+    }
     setModalVisible(false);
   };
 
@@ -28,33 +40,28 @@ export default function Practice() {
         <Entypo
           name={selectedReaction}
           size={32}
-          onPress={() => setModalVisible(true)}
+          onPress={() => heartReactionPressed(selectedReaction)}
         />
-
-        <Modal transparent={true} visible={visible}>
-          <TouchableOpacity
-            style={styles.reactionsModalContaier}
-            onPress={() => setModalVisible(false)}
-          >
-            <View style={styles.reactionsWrapper}>
-              {reactions.map((item, key) => (
-                <TouchableOpacity
-                  style={styles.reactionsItems}
-                  onPress={() => handleRactionPress(item.icon)}
-                  key={key}
-                >
-                  <Entypo
-                    name={item.icon}
-                    size={24}
-                    style={styles.iconsStyle}
-                  />
-                  <Text style={styles.textStyle}>{item.name}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </TouchableOpacity>
-        </Modal>
       </View>
+      <Modal transparent={true} visible={visible}>
+        <TouchableOpacity
+          style={styles.touchableContaier}
+          onPress={() => setModalVisible(false)}
+        >
+          <View style={styles.reactionsWrapper}>
+            {reactions.map((item, key) => (
+              <TouchableOpacity
+                style={styles.reactionsItems}
+                onPress={() => handleRactionPress(item.icon)}
+                key={key}
+              >
+                <Entypo name={item.icon} size={24} style={styles.iconsStyle} />
+                <Text style={styles.textStyle}>{item.name}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </TouchableOpacity>
+      </Modal>
     </View>
   );
 }
@@ -65,20 +72,25 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   iconWrapper: {
+    flex: 1,
     width: "100%",
     height: "30%",
     alignItems: "center",
+    justifyContent: "flex-end",
+    borderWidth: 2,
   },
-  reactionsModalContaier: {
+  touchableContaier: {
     flex: 1,
     //backgroundColor: "red",
     flexDirection: "row",
-    alignItems: "baseline",
+    alignItems: "flex-end",
+    justifyContent: "center",
   },
   reactionsWrapper: {
+    //backgroundColor: "blue",
     borderWidth: 2,
-    position: "absolute",
-    top: 76,
+    //position: "absolute",
+    top: -80,
     paddingHorizontal: 7,
     paddingVertical: 7,
     borderRadius: 8,
