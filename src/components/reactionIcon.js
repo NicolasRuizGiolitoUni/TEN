@@ -34,6 +34,7 @@ const MyIcon = () => {
   };
 
   const handleIconPress = () => {
+    getCoordinates();
     if (reaction != "heart-outlined") {
       setReaction("heart-outlined");
     } else {
@@ -48,7 +49,7 @@ const MyIcon = () => {
 
   return (
     <View>
-      <View ref={myViewRef} onLayout={getCoordinates}>
+      <View ref={myViewRef}>
         <TouchableOpacity onPress={() => handleIconPress(reaction)}>
           <Entypo name={reaction} size={32} />
         </TouchableOpacity>

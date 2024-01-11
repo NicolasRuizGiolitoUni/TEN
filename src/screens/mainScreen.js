@@ -34,7 +34,6 @@ export default function MainScreen() {
       return <Text>{error}</Text>;
     }
 
-    //console.log(response);
     return response ? <Feed data={response} /> : <Text>No data</Text>;
   };
   const [fontsLoaded] = useFonts({
