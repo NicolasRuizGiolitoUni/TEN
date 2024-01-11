@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import React from "react";
 import Feather from "@expo/vector-icons/Feather";
-import colors from "../../assets/Colors/colors";
+import colors from "../../assets/colors/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function Header() {
@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     height: 64,
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 10,
-    paddingHorizontal: 16,
+    marginTop: 0,
+    paddingHorizontal: 12,
   },
   headerLeft: {
     flexDirection: "row",
@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
   },
   tenText: {
     fontFamily: "Inter-Medium",
-    fontSize: 20,
+    fontSize: 22,
     color: colors.text,
-    paddingLeft: 13,
+    paddingLeft: 10,
   },
   plusIcon: {
     paddingRight: 23,

@@ -1,10 +1,9 @@
 import { View, StyleSheet, Text, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useFonts } from "expo-font";
-import Feed from "../components/feed";
 import Header from "../components/header";
 import NavigationBar from "../components/navigationBar";
-import FeedJSON from "../components/feedJSON";
+import Feed from "../components/feed";
 
 export default function MainScreen() {
   const [isLoding, setIsLoding] = useState(true);
@@ -36,7 +35,7 @@ export default function MainScreen() {
     }
 
     //console.log(response);
-    return response ? <FeedJSON data={response} /> : <Text>No data</Text>;
+    return response ? <Feed data={response} /> : <Text>No data</Text>;
   };
   const [fontsLoaded] = useFonts({
     "Inter-Light": require("../../assets/fonts/Inter-Light.ttf"),

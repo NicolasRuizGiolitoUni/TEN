@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import colors from "../../assets/Colors/colors";
+import colors from "../../assets/colors/colors";
 
 export default function NavigationBar() {
   return (
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
     flexShrink: 0,
     paddingLeft: 16,
     paddingRight: 14,
-    paddingTop: 20,
-    paddingBottom: 28,
+    paddingTop: 0,
+    paddingBottom: 16,
   },
   followingContainer: {
     width: 177,

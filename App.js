@@ -1,6 +1,7 @@
 import {
   View,
   Text,
+  Image,
   StyleSheet,
   Safe,
   SafeAreaView,
@@ -8,9 +9,6 @@ import {
 } from "react-native";
 import React from "react";
 import MainScreen from "./src/screens/mainScreen";
-import Practice from "./src/PracticeFiles/practice";
-import Feed from "./src/components/feed";
-import FeedPractice from "./src/components/feedJSON";
 
 export default function App() {
   return (
