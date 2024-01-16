@@ -5,8 +5,10 @@ import {
   Modal,
   TouchableWithoutFeedback,
   StyleSheet,
+  FlatList,
 } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
+import reactionList from "../data/reactionsList";
 
 const MyIcon = () => {
   const emojiSize = 32;
@@ -46,6 +48,14 @@ const MyIcon = () => {
     setReaction(icon);
     closeModal();
   };
+
+  const renderListItem = ({ item }) => (
+    <View style={[styles.modalContent, { top: myPy - 50, left: myLeft }]}>
+      <TouchableOpacity onPress={() => handleReactionChosen(item.name)}>
+        <Entypo name={item.name} size={emojiSize} />
+      </TouchableOpacity>
+    </View>
+  );
 
   return (
     <View>
