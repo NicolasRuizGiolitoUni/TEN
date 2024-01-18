@@ -21,17 +21,17 @@ const styles = StyleSheet.create({
   postImageContainer: {
     height: 245,
     //borderWidth: 2,
-    marginBottom: 12,
+    marginBottom: 16,
   },
   postImage: {
     //borderWidth: 2,
     backgroundColor: "#F2F2F2",
     flex: 1,
-    //marginHorizontal: 30,
+    marginHorizontal: 16,
     borderRadius: 10,
   },
   imageStyle: {
-    width: "100%",
-    height: "100%",
+    //borderRadius: 10,
+    flex: 1,
   },
 });

@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingLeft: 20,
     paddingRight: 18,
-    paddingTop: 8,
+    marginTop: 82,
     paddingBottom: 40,
   },
   reactionLeft: {

@@ -1,18 +1,19 @@
 import { View, Text, Image, StyleSheet, FlatList } from "react-native";
 import React from "react";
-import PostHeader from "./feedComponents/postHeader";
-import PostText from "./feedComponents/postText";
-import PostImage from "./feedComponents/postImage";
-import PostTitle from "./feedComponents/postTitle";
-import PostReaction from "./feedComponents/postReactions";
+import PostText from "./feedComponentsUI/postText";
+import PostImage from "./feedComponentsUI/postImage";
+import PostReaction from "./feedComponentsUI/postReactions";
+import PostHeaderUI from "./feedComponentsUI/postHeaderUI";
+import colors from "../../assets/colors/colors";
+import PostTitleUI from "./feedComponentsUI/postTitleUI";
 
 export default function Feed({ data }) {
   const renderPostItem = ({ item }) => {
     return (
       <View style={styles.feedWrapper}>
-        <PostHeader item={item} />
+        <PostHeaderUI item={item} />
         <PostImage item={item} />
-        <PostTitle item={item} />
+        <PostTitleUI item={item} />
         <PostText item={item} />
         <PostReaction item={item} />
       </View>
@@ -29,6 +30,10 @@ export default function Feed({ data }) {
 
 const styles = StyleSheet.create({
   feedWrapper: {
+    borderTopStartRadius: 20,
+    borderTopEndRadius: 20,
+    marginTop: 6,
+    backgroundColor: colors.white,
     flex: 1,
     //borderWidth: 2,
   },

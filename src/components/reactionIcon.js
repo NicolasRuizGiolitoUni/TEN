@@ -17,12 +17,10 @@ const MyIcon = () => {
   const [myLeft, setMyLeft] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
   const [reaction, setReaction] = useState("heart-outlined");
+  const reactionImage = require("../../assets/Images/reaction.png");
 
   const getCoordinates = () => {
     myViewRef.current.measure((fx, fy, width, height, px, py) => {
-      console.log("Position Parent:", fx, fy);
-      console.log("Position:", px, py);
-      console.log("Dimensions:", width, height);
       setMyPy(py);
       setMyLeft(px);
     });

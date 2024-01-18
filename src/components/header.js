@@ -3,18 +3,23 @@ import React from "react";
 import Feather from "@expo/vector-icons/Feather";
 import colors from "../../assets/colors/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function Header() {
   return (
     <SafeAreaView>
       <View style={styles.headerWrapper}>
         <View style={styles.headerLeft}>
-          <Ionicons name="menu-sharp" size={30} color={colors.text} />
+          <Ionicons name="menu-sharp" size={30} color={colors.white} />
           <Text style={styles.tenText}>TEN</Text>
         </View>
         <View style={styles.headerRight}>
           <Feather name="plus" size={28} style={styles.plusIcon} />
-          <Feather name="search" size={24} style={styles.searchIcon} />
+          <MaterialCommunityIcons
+            name="bell-outline"
+            size={24}
+            style={styles.searchIcon}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -29,7 +34,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 0,
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
   },
   headerLeft: {
     flexDirection: "row",
@@ -42,14 +47,14 @@ const styles = StyleSheet.create({
   tenText: {
     fontFamily: "Inter-Medium",
     fontSize: 22,
-    color: colors.text,
+    color: colors.white,
     paddingLeft: 10,
   },
   plusIcon: {
     paddingRight: 23,
-    color: colors.circles,
+    color: colors.white,
   },
   searchIcon: {
-    color: colors.circles,
+    color: colors.white,
   },
 });

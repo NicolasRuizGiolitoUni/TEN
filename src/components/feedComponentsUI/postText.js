@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
   },
   postTextText: {
     fontFamily: "Inter-Regular",
-    fontSize: 14,
+    fontSize: 16,
+    lineHeight: 22,
     //  textAlign: "justify",
   },
 });
