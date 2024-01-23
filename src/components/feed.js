@@ -3,15 +3,17 @@ import React from "react";
 import PostText from "./feedComponentsUI/postText";
 import PostImage from "./feedComponentsUI/postImage";
 import PostReaction from "./feedComponentsUI/postReactions";
-import PostHeaderUI from "./feedComponentsUI/postHeaderUI";
+import PostHeaderUI from "./feedComponentsUI/postHeader";
 import colors from "../../assets/colors/colors";
-import PostTitleUI from "./feedComponentsUI/postTitleUI";
+import PostTitleUI from "./feedComponentsUI/postTitle";
 
 export default function Feed({ data }) {
-  const renderPostItem = ({ item }) => {
+  const renderPostItem = ({ item, index }) => {
+    const checkIndexContainer =
+      index === 0 ? styles.feedWrapper : styles.feedWrapperNotFirst;
     return (
-      <View style={styles.feedWrapper}>
-        <PostHeaderUI item={item} />
+      <View style={checkIndexContainer}>
+        <PostHeaderUI item={item} index={index} />
         <PostImage item={item} />
         <PostTitleUI item={item} />
         <PostText item={item} />
@@ -19,6 +21,7 @@ export default function Feed({ data }) {
       </View>
     );
   };
+
   return (
     <FlatList
       data={data}
@@ -32,6 +35,14 @@ const styles = StyleSheet.create({
   feedWrapper: {
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
+    marginTop: 6,
+    backgroundColor: colors.white,
+    flex: 1,
+    //borderWidth: 2,
+  },
+  feedWrapperNotFirst: {
+    //borderTopStartRadius: 20,
+    //borderTopEndRadius: 20,
     marginTop: 6,
     backgroundColor: colors.white,
     flex: 1,

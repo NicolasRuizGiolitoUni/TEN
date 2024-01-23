@@ -1,25 +1,38 @@
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import Feather from "@expo/vector-icons/Feather";
 import colors from "../../assets/colors/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import NotAviableAlert from "./notAvailableAlert";
 
 export default function Header() {
   return (
     <SafeAreaView>
       <View style={styles.headerWrapper}>
         <View style={styles.headerLeft}>
-          <Ionicons name="menu-sharp" size={30} color={colors.white} />
+          <TouchableOpacity onPress={NotAviableAlert}>
+            <Ionicons name="menu-sharp" size={30} color={colors.white} />
+          </TouchableOpacity>
           <Text style={styles.tenText}>TEN</Text>
         </View>
         <View style={styles.headerRight}>
-          <Feather name="plus" size={28} style={styles.plusIcon} />
-          <MaterialCommunityIcons
-            name="bell-outline"
-            size={24}
-            style={styles.searchIcon}
-          />
+          <TouchableOpacity onPress={NotAviableAlert}>
+            <Feather name="plus" size={28} style={styles.plusIcon} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={NotAviableAlert}>
+            <MaterialCommunityIcons
+              name="bell-outline"
+              size={24}
+              style={styles.searchIcon}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

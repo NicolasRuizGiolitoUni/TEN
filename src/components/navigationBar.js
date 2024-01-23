@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import colors from "../../assets/colors/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import NotAviableAlert from "./notAvailableAlert";
 
 export default function NavigationBar() {
   return (
@@ -15,7 +16,9 @@ export default function NavigationBar() {
         </View>
       </View>
       <View style={styles.iconWrapper}>
-        <Ionicons name="search" size={24} color={colors.white} />
+        <TouchableOpacity onPress={NotAviableAlert}>
+          <Ionicons name="search" size={24} color={colors.white} />
+        </TouchableOpacity>
       </View>
     </View>
   );
