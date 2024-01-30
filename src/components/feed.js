@@ -27,15 +27,15 @@ export default function Feed({ data }) {
       data={data}
       renderItem={renderPostItem}
       keyExtractor={(item) => item.userName}
+      alwaysBounceVertical={false}
+      bounces={false}
     />
   );
 }
 
 const styles = StyleSheet.create({
   feedWrapper: {
-    borderTopStartRadius: 20,
-    borderTopEndRadius: 20,
-    marginTop: 6,
+    //marginTop: 6,
     backgroundColor: colors.white,
     flex: 1,
     //borderWidth: 2,
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     //borderTopStartRadius: 20,
     //borderTopEndRadius: 20,
     marginTop: 6,
+    paddingTop: 17,
     backgroundColor: colors.white,
     flex: 1,
     //borderWidth: 2,

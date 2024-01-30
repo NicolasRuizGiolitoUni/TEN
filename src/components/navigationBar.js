@@ -15,11 +15,6 @@ export default function NavigationBar() {
           <Text style={styles.discoverText}>Discover</Text>
         </View>
       </View>
-      <View style={styles.iconWrapper}>
-        <TouchableOpacity onPress={NotAviableAlert}>
-          <Ionicons name="search" size={24} color={colors.white} />
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }
@@ -30,27 +25,32 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 21,
+    paddingBottom: 25,
   },
   followingDiscoverBox: {
-    backgroundColor: colors.white,
-    width: 317,
-    height: 39,
+    borderBottomWidth: 1,
+    borderColor: colors.white,
+    //backgroundColor: colors.white,
+    width: 359,
+    height: 45,
     flexDirection: "row",
-    borderRadius: 35,
+    //borderRadius: 35,
     justifyContent: "space-around",
     //alignItems: "stretch",
   },
   followingBox: {
-    borderRadius: 35,
+    borderBottomWidth: 2,
+    borderColor: colors.white,
+    //borderRadius: 35,
     flex: 1,
-    backgroundColor: colors.darkblue,
+    //backgroundColor: colors.white,
     justifyContent: "center",
     alignItems: "center",
   },
   followingText: {
     color: colors.white,
     fontFamily: "Inter-Medium",
+    fontSize: 16,
   },
   discoverBox: {
     flex: 1,
@@ -59,6 +59,8 @@ const styles = StyleSheet.create({
   },
   discoverText: {
     fontFamily: "Inter-Medium",
+    color: colors.white,
+    fontSize: 16,
   },
   iconWrapper: {
     justifyContent: "center",

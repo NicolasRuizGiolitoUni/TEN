@@ -24,13 +24,21 @@ export default function Header() {
         </View>
         <View style={styles.headerRight}>
           <TouchableOpacity onPress={NotAviableAlert}>
+            <Ionicons
+              name="search"
+              size={24}
+              color={colors.white}
+              style={styles.searchIcon}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={NotAviableAlert}>
             <Feather name="plus" size={28} style={styles.plusIcon} />
           </TouchableOpacity>
           <TouchableOpacity onPress={NotAviableAlert}>
             <MaterialCommunityIcons
               name="bell-outline"
               size={24}
-              style={styles.searchIcon}
+              style={styles.bellIcon}
             />
           </TouchableOpacity>
         </View>
@@ -64,10 +72,14 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   plusIcon: {
-    paddingRight: 23,
+    //paddingRight: 23,
+    color: colors.white,
+    paddingRight: 10,
+  },
+  bellIcon: {
     color: colors.white,
   },
   searchIcon: {
-    color: colors.white,
+    marginRight: 10,
   },
 });

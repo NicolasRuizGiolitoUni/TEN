@@ -14,7 +14,7 @@ import MainScreen from "./src/screens/mainScreen";
 export default function App() {
   return (
     <ImageBackground
-      source={require("./assets/Images/Background.png")}
+      source={require("./assets/Images/new_background.jpg")}
       style={styles.backgroundImage}
     >
       <View style={styles.container}>

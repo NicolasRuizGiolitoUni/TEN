@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   postHeaderWrapper: {
     //borderWidth: 2,
     justifyContent: "center",
-    paddingVertical: 18,
+    paddingBottom: 15,
     paddingHorizontal: 15,
   },
   postHeaderBox: {

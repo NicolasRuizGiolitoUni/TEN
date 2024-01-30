@@ -11,6 +11,7 @@ import Header from "../components/header";
 import NavigationBar from "../components/navigationBar";
 import Feed from "../components/feed";
 import NavigationBar2 from "../components/navigationBar";
+import colors from "../../assets/colors/colors";
 
 export default function MainScreen() {
   const [isLoding, setIsLoding] = useState(true);
@@ -18,7 +19,9 @@ export default function MainScreen() {
   const [response, setResponse] = useState();
 
   useEffect(() => {
-    fetch("https://tenv1-44bcb-default-rtdb.firebaseio.com/user.json")
+    fetch(
+      "https://tenjson-cd580-default-rtdb.europe-west1.firebasedatabase.app/user.json"
+    )
       .then((res) => res.json())
       .then(
         (result) => {
@@ -64,7 +67,10 @@ export default function MainScreen() {
     <View style={styles.container}>
       <Header />
       <NavigationBar />
-      {getContent()}
+      <View style={styles.curves}></View>
+      <View style={{ flex: 1, backgroundColor: "#f2f7ff" }}>
+        {getContent()}
+      </View>
     </View>
   );
 }
@@ -75,5 +81,12 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
+  },
+  curves: {
+    height: 27,
+    width: "100%",
+    backgroundColor: colors.white,
+    borderTopStartRadius: 20,
+    borderTopEndRadius: 20,
   },
 });
