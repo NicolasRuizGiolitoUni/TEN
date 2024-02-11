@@ -12,7 +12,9 @@ export default function NavigationBar() {
           <Text style={styles.followingText}>Following</Text>
         </View>
         <View style={styles.discoverBox}>
-          <Text style={styles.discoverText}>Discover</Text>
+          <TouchableOpacity onPress={NotAviableAlert}>
+            <Text style={styles.discoverText}>Discover</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

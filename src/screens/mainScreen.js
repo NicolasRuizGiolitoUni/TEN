@@ -20,7 +20,7 @@ export default function MainScreen() {
 
   useEffect(() => {
     fetch(
-      "https://tenjson-cd580-default-rtdb.europe-west1.firebasedatabase.app/user.json"
+      "https://tenoo-2854a-default-rtdb.europe-west1.firebasedatabase.app/user.json"
     )
       .then((res) => res.json())
       .then(
@@ -43,7 +43,7 @@ export default function MainScreen() {
     if (error) {
       return <Text>{error}</Text>;
     }
-
+    console.log(response);
     return response ? <Feed data={response} /> : <Text>No data</Text>;
   };
   const [fontsLoaded] = useFonts({

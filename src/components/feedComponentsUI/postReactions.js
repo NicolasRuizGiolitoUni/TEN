@@ -18,16 +18,16 @@ const PostReaction = ({ item }) => {
       <View style={styles.reactionLeft}>
         <ReactionImage />
         <TouchableOpacity onPress={NotAviableAlert}>
-          <Image
+          {/* <Image
             source={require("../../../assets/Images/comments.png")}
             style={styles.commentIcon}
-          />
+          /> */}
         </TouchableOpacity>
       </View>
       <View style={styles.reactionRight}>
-        <TouchableOpacity onPress={NotAviableAlert}>
+        {/* <TouchableOpacity onPress={NotAviableAlert}>
           <Feather name="bookmark" size={28} style={styles.bookmarkIcon} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
@@ -39,21 +39,28 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingLeft: 20,
     paddingRight: 18,
-    marginTop: 82,
+    marginTop: 60,
+
     paddingBottom: 20,
   },
   reactionLeft: {
     //borderWidth: 2,
     flexDirection: "row",
     alignItems: "center",
+    //flex: 1,
+    height: 45,
+    width: 45,
   },
-  reactionRight: {},
+  reactionRight: {
+    justifyContent: "center",
+  },
   reactionIcon: {
     color: colors.text,
   },
   commentIcon: {
+    flex: 1,
     color: colors.text,
-    paddingLeft: 5,
+    marginLeft: 5,
   },
   bookmarkIcon: {
     color: colors.text,

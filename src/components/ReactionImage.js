@@ -13,11 +13,11 @@ import colors from "../../assets/colors/colors";
 
 export default function ReactionImage() {
   const reactionArray = {
-    defaultReaction: require("../../assets/Images/reaction.png"),
-    sad: require("../../assets/Images/sad.png"),
+    defaultReaction: require("../../assets/Images/nlike.png"),
+    like: require("../../assets/Images/Reaction-clicked.png"),
+    inspiring: require("../../assets/Images/Inspiring.png"),
+    congratulations: require("../../assets/Images/Congratulations.png"),
     love: require("../../assets/Images/love.png"),
-    funny: require("../../assets/Images/funny.png"),
-    surprise: require("../../assets/Images/surprise.png"),
   };
 
   const myViewRef = useRef(null);
@@ -67,15 +67,47 @@ export default function ReactionImage() {
     <View>
       <View ref={myViewRef}>
         <TouchableOpacity onPress={handleIconPress}>
-          <Image style={reactionSize(reaction)} source={reaction} />
+          <Image style={styles.reactionImage} source={reaction} />
         </TouchableOpacity>
       </View>
       <Modal transparent={true} animationType="fade" visible={modalVisible}>
         <TouchableWithoutFeedback onPress={closeModal}>
           <View style={styles.modalWrapper}>
             <View
-              style={[styles.modalContent, { top: myPy - 145, left: myLeft }]}
+              style={[styles.modalContent, { top: myPy - 161, left: myLeft }]}
             >
+              <TouchableOpacity
+                onPress={() => handleReactionSelection(reactionArray.like)}
+                style={styles.reactionsStyle}
+              >
+                <Image
+                  style={styles.selectedReaction}
+                  source={reactionArray.like}
+                />
+                <Text style={styles.reactionText}>Like</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  handleReactionSelection(reactionArray.congratulations)
+                }
+                style={styles.reactionsStyle}
+              >
+                <Image
+                  style={styles.selectedReaction}
+                  source={reactionArray.congratulations}
+                />
+                <Text style={styles.reactionText}>Congratualtions!</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleReactionSelection(reactionArray.inspiring)}
+                style={styles.reactionsStyle}
+              >
+                <Image
+                  style={styles.selectedReaction}
+                  source={reactionArray.inspiring}
+                />
+                <Text style={styles.reactionText}>Inspiring</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => handleReactionSelection(reactionArray.love)}
                 style={styles.reactionsStyle}
@@ -84,37 +116,7 @@ export default function ReactionImage() {
                   style={styles.selectedReaction}
                   source={reactionArray.love}
                 />
-                <Text style={styles.reactionText}>Love</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => handleReactionSelection(reactionArray.funny)}
-                style={styles.reactionsStyle}
-              >
-                <Image
-                  style={styles.selectedReaction}
-                  source={reactionArray.funny}
-                />
-                <Text style={styles.reactionText}>Haha!</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => handleReactionSelection(reactionArray.surprise)}
-                style={styles.reactionsStyle}
-              >
-                <Image
-                  style={styles.selectedReaction}
-                  source={reactionArray.surprise}
-                />
-                <Text style={styles.reactionText}>Wow!</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => handleReactionSelection(reactionArray.sad)}
-                style={styles.reactionsStyle}
-              >
-                <Image
-                  style={styles.selectedReaction}
-                  source={reactionArray.sad}
-                />
-                <Text style={styles.reactionText}>Sad</Text>
+                <Text style={styles.reactionText}>Love it!</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => handleReactionSelection(reactionArray.mad)}
@@ -135,10 +137,12 @@ export default function ReactionImage() {
 
 const styles = StyleSheet.create({
   reactionImage: {
-    height: 22,
-    width: 22,
+    //borderWidth: 2,
+    height: 28,
+    width: 28,
   },
   reactionImageNotDefault: {
+    //borderWidth: 2,
     height: 30,
     width: 30,
   },
@@ -150,20 +154,24 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    padding: 5,
-    width: "25%",
-    height: 140,
+    padding: 10,
+    width: "44%",
+    height: 160,
     backgroundColor: "white",
     borderRadius: 10,
     backgroundColor: colors.blue,
   },
+  touchableStlye: {},
   selectedReaction: {
     height: 32,
     width: 33,
   },
   reactionsStyle: {
+    width: "100%",
+    //borderWidth: 2,
     flexDirection: "row",
     alignItems: "center",
+    paddingBottom: 5,
   },
   reactionText: {
     marginLeft: 5,

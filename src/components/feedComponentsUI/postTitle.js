@@ -1,8 +1,24 @@
-import { View, Text, Image, StyleSheet, FlatList } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState } from "react";
 import colors from "../../../assets/colors/colors";
 
 const PostTitleUI = ({ item }) => {
+  const [follow, SetFollow] = useState(item.followStatus);
+
+  const HandleFollow = () => {
+    if (follow === "Follow") {
+      SetFollow("Unfollow");
+    } else {
+      SetFollow("Follow");
+    }
+  };
   return (
     <View style={styles.postTitleWrapper}>
       <View style={styles.titleLeftWrapper}>
@@ -23,9 +39,11 @@ const PostTitleUI = ({ item }) => {
         </View>
       </View>
       <View style={styles.titleRightWrapper}>
-        <View style={styles.followStatusBox}>
-          <Text style={styles.followStatusText}>{item.followStatus}</Text>
-        </View>
+        <TouchableOpacity onPress={() => HandleFollow()}>
+          {/* <View style={styles.followStatusBox}>
+            <Text style={styles.followStatusText}>{follow}</Text>
+          </View> */}
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -23,7 +23,7 @@ export default function Header() {
           <Text style={styles.tenText}>TEN</Text>
         </View>
         <View style={styles.headerRight}>
-          <TouchableOpacity onPress={NotAviableAlert}>
+          {/* <TouchableOpacity onPress={NotAviableAlert}>
             <Ionicons
               name="search"
               size={24}
@@ -40,7 +40,7 @@ export default function Header() {
               size={24}
               style={styles.bellIcon}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     </SafeAreaView>

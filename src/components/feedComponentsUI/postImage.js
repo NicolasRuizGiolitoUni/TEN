@@ -2,6 +2,13 @@ import { View, Text, Image, StyleSheet, FlatList } from "react-native";
 import React from "react";
 
 const PostImage = ({ item }) => {
+  const hasImage = item.posts[0].postImage !== "";
+
+  // If postImage is empty, don't render the image container
+  if (!hasImage) {
+    return null;
+  }
+
   return (
     <View style={styles.postImageContainer}>
       <View style={styles.postImage}>

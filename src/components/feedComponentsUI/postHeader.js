@@ -1,21 +1,23 @@
-import { View, Text, Image, StyleSheet, FlatList } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState } from "react";
 import Entypo from "@expo/vector-icons/Entypo";
 import colors from "../../../assets/colors/colors";
+
 const PostHeaderUI = ({ item }) => {
   return (
     <View style={styles.postHeaderWrapper}>
+      <Text style={styles.categoryText}>#{item.posts[0].category}</Text>
       <View style={styles.postHeaderBox}>
-        <Text numberOfLines={2} ellipsizeMode="tail" style={styles.titleText}>
-          {item.posts[0].title}
-        </Text>
-        <View style={styles.categoryBox}>
-          <Text style={styles.categoryText}>
-            {item.posts[0].category.length <= 8
-              ? item.posts[0].category
-              : `${item.posts[0].category.substring(0, 8)}...`}
-          </Text>
-        </View>
+        <TouchableOpacity>
+          <Text style={styles.titleText}>{item.posts[0].title}</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -36,19 +38,20 @@ const styles = StyleSheet.create({
   titleText: {
     fontFamily: "Avenir-Medium",
     fontSize: 20,
-    maxWidth: 200,
+    //maxWidth: 200,
     lineHeight: 25,
   },
   categoryText: {
-    paddingHorizontal: 12,
-    color: colors.white,
+    fontSize: 12,
+    paddingHorizontal: 0,
+    marginBottom: 8,
+    color: colors.grey,
+    fontFamily: "Inter-Regular",
   },
   categoryBox: {
     alignItems: "flex-end",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 30,
-    backgroundColor: colors.blue,
     marginTop: 16,
     marginBottom: 8,
   },
